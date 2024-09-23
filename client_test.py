@@ -1,5 +1,9 @@
 import unittest
-from client3 import getDataPoint
+
+import self
+
+from client3 import getDataPoint, quotes
+
 
 class ClientTest(unittest.TestCase):
   def test_getDataPoint_calculatePrice(self):
@@ -16,6 +20,8 @@ class ClientTest(unittest.TestCase):
     ]
     """ ------------ Add the assertion below ------------ """
 
+  for quote in quotes:
+    self.assertEqual(getDataPoint(quote), (quote['stock'], quote['topbid']['price'], quote['top_ask']['price'], [quote['top_bid']['price']] + [quote['top_ask']['price']] / 2))
 
   """ ------------ Add more unit tests ------------ """
 
